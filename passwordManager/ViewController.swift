@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         contentView.addSubview(signUpButton)
         
         usernameTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        usernameTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive = true
+        usernameTextField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 100).isActive = true
         usernameTextField.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 3/4).isActive = true
         
         passwordTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -106,7 +106,10 @@ class ViewController: UIViewController {
     
     @objc private func loginPressed(sender: Any) {
         let homeVC = HomeViewController()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        let navVC = UINavigationController(rootViewController: homeVC)
+        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalTransitionStyle = .flipHorizontal
+        present(navVC, animated: true, completion: nil)
     }
     
     @objc func signUpPressed(sender: Any) {
